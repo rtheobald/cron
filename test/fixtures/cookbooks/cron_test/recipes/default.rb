@@ -17,14 +17,15 @@
 # limitations under the License.
 #
 
-include_recipe "cron"
+include_recipe 'cron'
 
-cron_d "bizarrely-scheduled-usage-report" do
-  minute "*/5"
-  hour "1,23"
-  day "2-5"
-  command "/srv/app/scripts/generate_report"
-  user "appuser"
+cron_d 'bizarrely-scheduled-usage-report' do
+  minute '*/5'
+  hour '1,23'
+  day '2-5'
+  command '/srv/app/scripts/generate_report'
+  user 'appuser'
+  action :create
 end
 
 cron_d "test-month-usage-report" do
