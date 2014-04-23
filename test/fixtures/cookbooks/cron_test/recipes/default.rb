@@ -1,8 +1,8 @@
 #
-# Cookbook Name:: cron
+# Cookbook Name:: cron_test
 # Recipe:: test
 #
-# Copyright:: (c) 2012, Opscode, Inc.
+# Copyright:: (c) 2008-2014, Chef Software, Inc
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -28,18 +28,20 @@ cron_d 'bizarrely-scheduled-usage-report' do
   action :create
 end
 
-cron_d "test-month-usage-report" do
-  minute "0"
-  hour "6"
-  month "1"
-  command "/srv/app/scripts/generate_report"
-  user "appuser"
+cron_d 'test-month-usage-report' do
+  minute '0'
+  hour '6'
+  month '1'
+  command '/srv/app/scripts/generate_report'
+  user 'appuser'
+  action :create
 end
 
-cron_d "test-weekday-usage-report" do
-  minute "45"
-  hour "13"
-  weekday "7"
-  command "/srv/app/scripts/generate_report"
-  user "appuser"
+cron_d 'test-weekday-usage-report' do
+  minute '45'
+  hour '13'
+  weekday '7'
+  command '/srv/app/scripts/generate_report'
+  user 'appuser'
+  action :create
 end

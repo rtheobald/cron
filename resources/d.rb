@@ -42,7 +42,7 @@ def initialize(*args)
 end
 
 def self.validate_predefined_value(spec)
-  return true if spec == ''
+  return true if spec.nil?
   # Several special predefined values can substitute in the cron expression
   if ['@reboot', '@yearly', '@annually', '@monthly', '@weekly', '@daily', '@midnight', '@hourly'].include? spec.downcase
     return true
@@ -52,6 +52,7 @@ def self.validate_predefined_value(spec)
 end
 
 def self.validate_numeric(spec, min, max)
+#  binding.pry
   if spec.is_a? Fixnum
     return false unless spec >= min && spec <= max
     return true
